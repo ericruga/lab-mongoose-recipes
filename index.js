@@ -26,8 +26,21 @@ mongoose
         duration: '20',
         creator: 'Erica',
         created: '2013-12-01'
-
       })
+      //console.log(title);
+    })
+
+    .then((response) => {
+      return Recipe.insertMany(data);
+      //console.log('hola');
+    })
+
+    .then((response) => {
+      return Recipe.findOneAndUpdate(
+        { title: "Rigatoni alla Genovese" }, 
+        { duration: 100 },
+        { new: true } 
+      );
     })
  
   .catch(error => {
