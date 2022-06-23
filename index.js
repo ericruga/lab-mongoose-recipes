@@ -30,19 +30,23 @@ mongoose
       //console.log(title);
     })
 
-    .then((response) => {
+  .then((response) => {
       return Recipe.insertMany(data);
       //console.log('hola');
-    })
+  })
 
-    .then((response) => {
+  .then((response) => {
       return Recipe.findOneAndUpdate(
         { title: "Rigatoni alla Genovese" }, 
         { duration: 100 },
         { new: true } 
       );
-    })
- 
+  })
+    
+  .then((response) => {
+      return Recipe.findOneAndDelete({ title: "Carrot Cake" });
+  })
+
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
