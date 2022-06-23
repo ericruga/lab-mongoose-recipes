@@ -15,9 +15,21 @@ mongoose
     // Before adding any recipes to the database, let's remove all existing ones
     return Recipe.deleteMany()
   })
-  .then(() => {
-    // Run your code here, after you have insured that the connection was made
-  })
+  .then((response) => {
+      return Recipe.create({
+        title:'Pizza Catalana',
+        level:'UltraPro Chef',
+        ingredients: ["pà", "tomàquet", "oli"],
+        cuisine: 'Mediterranian',
+        dishType: 'other',
+        image: "https://www.eliris.cat/wp-content/uploads/2018/08/IMG_2198-copia-1024x730.jpg",
+        duration: '20',
+        creator: 'Erica',
+        created: '2013-12-01'
+
+      })
+    })
+ 
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
