@@ -13,7 +13,7 @@ mongoose
   .then(x => {
     console.log(`Connected to the database: "${x.connection.name}"`);
     // Before adding any recipes to the database, let's remove all existing ones
-    return Recipe.deleteMany()
+   return Recipe.deleteMany()
   })
   .then((response) => {
       return Recipe.create({
@@ -27,13 +27,22 @@ mongoose
         creator: 'Erica',
         created: '2013-12-01'
       })
-      //console.log(title);
+    
     })
+  .then((response) => {
+    console.log(response.title)
+  })
 
   .then((response) => {
       return Recipe.insertMany(data);
       //console.log('hola');
   })
+  .then((response) => {
+    response.forEach  ( (item) => {
+  console.log(item.title)
+  })
+})
+
 
   .then((response) => {
       return Recipe.findOneAndUpdate(
@@ -47,6 +56,12 @@ mongoose
       return Recipe.findOneAndDelete({ title: "Carrot Cake" });
   })
 
+  .then((response) => {
+  mongoose.connection.close()
+  })
+
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+

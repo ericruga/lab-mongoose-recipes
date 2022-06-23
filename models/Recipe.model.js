@@ -35,7 +35,7 @@ const recipeSchema = new Schema({
 
     duration: {
       type: Number, 
-      //minimum should be 0
+      min: 0,
     },
 
     creator: {
@@ -44,7 +44,7 @@ const recipeSchema = new Schema({
 
     created: {
       type: Date,
-      //default: today,
+      default: Date.now,
     }
   
   });
